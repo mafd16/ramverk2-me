@@ -1,0 +1,22 @@
+doctype html
+html
+    head
+        meta(charset="utf-8")
+        title= title
+        block style
+            link(rel="stylesheet", href="/stylesheets/style.css")
+    body
+        block header
+            div(class="site-header") Site header
+        block navbar
+            div(class="site-navbar")
+                div(class="nav-content")
+                    <a class="nav-button" href="/">Martin</a>
+                    <a class="nav-button" href="/about">Om kursen</a>
+                    <a class="nav-button" href="/report">Rapporter</a>
+        block main
+            main(class="main") Mainblock
+        block footer
+            div(class="site-footer")
+                div(class="footer-content")
+                    p Copyright &copy; by Martin Fagerlund
