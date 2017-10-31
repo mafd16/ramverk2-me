@@ -1,10 +1,10 @@
 body {
-  margin: 0;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    margin: 0;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
-  color: #00B7FF;
+    color: #00b7ff;
 }
 
 figure {
@@ -42,9 +42,9 @@ h1 {
 
 .nav-button {
     padding: 10px;
-    background-color: #0140AA;
+    background-color: #0140aa;
     border-radius: 5px;
-    box-shadow: 1px 1px 1px #888888;
+    box-shadow: 1px 1px 1px #888;
     color: black;
     text-decoration: none;
     font-weight: bold;
