@@ -53,6 +53,54 @@ block main
             | starta om den. Gick åt en del google-felsökning, där jag fann samma lösning
             | som det tipsades om i forumet. Att sen starta om i en .bat-fil var trevligt.
             | Även make test krånglade lite för mig, och <code>npm version 1.0.0</code>
-            | fick jag inte att fungera alls. Jag får felsöka vidare på det. 
+            | fick jag inte att fungera alls. Jag får felsöka vidare på det.
 
         br
+
+
+
+        h2 Kmom02
+
+        h3 Har du jobbat med Docker eller andra virtualiseringstekniker innan?
+
+        p
+            | Just Docker är nytt för mig. Jag har jobbat med Oracle VM VirtualBox i
+            | linux-kursen, men det är nog allt, i alla fall som jag kan minnas nu.
+            | Eller ja, i ramverk1 använde vi ju oss av travis, scrutinizer osv.
+            | De tjänsterna kan väl iofs räknas som virtualiseringstekniker. Dom
+            | testar ju vår kod i en viss miljö, med de dependencies som vi anger.
+
+        h3 Hur ser du på möjligheterna att använda dig av Docker för att jobba med tester av ditt repo?
+
+        p
+            | Det känns helt klart som en vettig möjlighet. Jag tänker mig rent allmänt
+            | en situation där man har en app på en server med en version av t.ex. Node
+            | som är utgående, och man vill uppdatera versionen på Node. Då testar man sin
+            | app i Docker först för att se att allt fungerar. Eller som test innan man
+            | uppdaterar sin app. Det finns säkert en massa fler möjligheter som jag inte
+            | har koll på.
+
+        h3 Gick allt smidigt eller stötte du på problem?
+
+        p
+            | Jodå, problem fick jag allt. Jag sitter på Windows 10 Home, så jag gjorde så
+            | att jag installerade Docker Toolbox. För att få det att fungera så fick jag
+            | gå in i BIOS (eller motsvarande) och aktivera virtualisering. Sen fick jag
+            | problem med ip-nummer. Det gick ju inte alls att köra på localhost, utan jag
+            | fick titta i programmet Kitematic som följde med Toolbox. Ip-adressen hittade
+            | jag senare även när jag startade Toolbox. Så långt allt bra. Nästa problem
+            | var att Docker inte kom åt mitt filsystem utanför C:\Users\MinUser. Docker
+            | accepterar heller inte administratörsrättigheter utan lösenord (jag kör utan
+            | lösenord på datorn) så jag trixade med att skapa en ny admin-användare på datorn,
+            | för att kunna ge Docker tillgång till C:.
+            | Det gick dock inte. Så jag hade en fungerande Docker, men som bara gick att köra på
+            | kod under min användare. I ren frustration bestämde jag mig för att börja om och
+            | uppgradera Windows till Education, och ominstallera Docker. Därefter krånglade det inget alls!
+
+        h3 Skapade du din egen image, berätta om den?
+
+        p
+            | Nej. Jag hoppar över det. Jag tycker jag har lagt tillräckligt med tid
+            | på detta kursmomentet, med allt krångel ovan. Däremot så la jag me-sidan på
+            | ett gratis webbhotell som det tipsades om i chatten. Det gick ganska så enkelt.
+            | Fick bara trixa lite med en PORT-variabel. 
