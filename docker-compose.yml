@@ -36,3 +36,27 @@ services:
         ports:
             - "8086:8086"
         command: "npm start"
+    node9_alpine:
+        build:
+            context: .
+            dockerfile: docker/Dockerfile-node9-alpine
+        volumes:
+            - ./:/app/
+        ports:
+            - "3000:3000"
+    node8_alpine:
+        build:
+            context: .
+            dockerfile: docker/Dockerfile-node8-alpine
+        volumes:
+            - ./:/app/
+        ports:
+            - "3001:3001"
+    node6_alpine:
+        build:
+            context: .
+            dockerfile: docker/Dockerfile-node6-alpine
+        volumes:
+            - ./:/app/
+        ports:
+            - "3002:3002"

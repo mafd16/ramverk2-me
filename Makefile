@@ -123,9 +123,33 @@ check: check-tools-js #check-tools-bash check-tools-php
 
 # target: test               - Run all tests.
 .PHONY: test
-test: htmlhint stylelint jscs eslint #jsunittest #csslint
+test: htmlhint stylelint eslint jsunittest #csslint jscs
 	@$(call HELPTEXT,$@)
 	[ ! -f composer.json ] || composer validate
+
+
+
+# target: test1              - Run docker node9.
+.PHONY: test1
+test1:
+	@$(call HELPTEXT,$@)
+	docker-compose run node9_alpine npm test
+
+
+
+# target: test2             - Run docker node8.
+.PHONY: test2
+test2:
+	@$(call HELPTEXT,$@)
+	docker-compose run node8_alpine npm test
+
+
+
+# target: test3              - Run docker node6.
+.PHONY: test3
+test3:
+	@$(call HELPTEXT,$@)
+	docker-compose run node6_alpine npm test
 
 
 
@@ -219,7 +243,7 @@ check-tools-js:
 .PHONY: htmlhint
 htmlhint:
 	@$(call HELPTEXT,$@)
-	[ ! -f .htmlhintrc ] || $(HTMLHINT) --ignore build/**,node_modules/** | grep -v "Config loaded:"
+	[ ! -f .htmlhintrc ] || $(HTMLHINT) --ignore build/**,node_modules/**,coverage/** | grep -v "Config loaded:"
 
 
 
@@ -235,7 +259,7 @@ csslint:
 .PHONY: stylelint
 stylelint:
 	@$(call HELPTEXT,$@)
-	[ ! -f .stylelintrc.json ] || $(STYLELINT) **/*.css
+	[ ! -f .stylelintrc.json ] || $(STYLELINT) **/*.css --ignore-path .gitignore
 
 
 
@@ -259,7 +283,7 @@ jscs:
 .PHONY: eslint
 eslint:
 	@$(call HELPTEXT,$@)
-	[ ! -f .eslintrc.json ] || $(ESLINT) .
+	[ ! -f .eslintrc.json ] || $(ESLINT) . --ignore-path .gitignore
 
 
 
@@ -275,11 +299,12 @@ eslint-fix:
 .PHONY: jsunittest
 jsunittest:
 	@$(call HELPTEXT,$@)
-ifneq ($(wildcard .nycrc),)
 	$(NYC) $(MOCHA) --reporter dot 'test/**/*.js'
-else
-	$(MOCHA) --reporter dot 'test/**/*.js'
-endif
+#ifneq ($(wildcard .nycrc),)
+#	$(NYC) $(MOCHA) --reporter dot 'test/**/*.js'
+#else
+#	$(MOCHA) --reporter dot 'test/**/*.js'
+#endif
 
 
 

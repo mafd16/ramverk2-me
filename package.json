@@ -4,7 +4,12 @@
   "description": "me-sida",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "test": "nyc --reporter=html --reporter=text mocha 'test/**/*.js'",
+    "node9": "docker-compose run node9_alpine npm test",
+    "node8": "docker-compose run node8_alpine npm test",
+    "node6": "docker-compose run node6_alpine npm test",
+    "report-codecov": "nyc report --reporter=lcov > coverage.lcov && codecov"
   },
   "author": "Martin Fagerlund",
   "dependencies": {
