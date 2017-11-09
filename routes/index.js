@@ -16,4 +16,14 @@ router.get('/report', function(req, res) {
     res.render('report', { title: 'Rapporter' });
 });
 
+/* GET nim page. */
+router.get('/nim', function(req, res) {
+    res.render('nim', { title: 'Spela Nim' });
+});
+
+/* GET nim play page. */
+router.get('/playnim', function(req, res) {
+    res.render('playnim', { title: 'Spela Nim' });
+});
+
 module.exports = router;
