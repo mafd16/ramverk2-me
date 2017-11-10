@@ -22,7 +22,7 @@ make test
 
 ### Run tests in Docker
 
-Use one of the following make- or docker-compose commands.
+Use one of the following make or docker-compose commands.
 
 ```
 # node 9 alpine
