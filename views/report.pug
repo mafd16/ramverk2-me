@@ -110,4 +110,63 @@ block main
 
         h2 Kmom03
 
-        h3 tester
+        p
+            | Detta kursmomentet var egentligen inte så krångligt, men jag blev ganska
+            | vilseledd i början, och förstod inte helt och hållet vad som skulle göras.
+            | <a href="https://dbwebb.se/forum/viewtopic.php?f=60&t=7005">Förtydligandet i forumet</a>
+            | var lite samma som jag funderade på, men jag hade ännu inte kommit till
+            | att formulera rätt fråga. Hur som så tänker jag mig att min applikation
+            | framöver kommer vara spelet Nim. Det går ut på att man är (minst) två
+            | spelare som turas om att ta tändstickor ur högar. Den som tar sista stickan
+            | förlorar.
+
+        h3 Berätta vilka tekniker/verktyg du valde för enhetstester och kodtäckning och varför?
+
+        p
+            | Jag valde Mocha och nyc/Istanbul. Mina kunskaper om vad som är bra, mindre bra
+            | eller inte så bra är inte tillräckligt bra känner jag. Därför kör jag på
+            | ett något säkrare kort, vilket lärarteamets rekommendationer borde vara.
+
+        h3 Berätta om din CI-kedja och reflektera över de valen du gjorde?
+
+        p
+            | Först tog jag Travis som byggtjänst. Jag tycker den har fungerat bra
+            | tidigare. Som kodanalys testade jag bettercodehub, och som kodtäckning
+            | blev det codecov. Hade lite problem i början innan jag hade skrivit min
+            | nim-kod och tester till den. Jag skrev visserligen några test-tester, men
+            | först med riktiga tester ser man ju att det händer saker med kodtäckningen.
+            | Sen la jag även till codeclimate och scrutinizer. Scrutinizer känns nästan
+            | mest värt att ha med, då den ger tre tjänster på en gång. Visserligen
+            | är tjänsterna lite olika i hur dom presenterar koden och de förbättringar
+            | man kan göra. Tror jag skulle behöva använda dessa tjänster ganska mycket
+            | mer, och med en stor mängd kod, för att hitta favoriter.
+
+        h3 Hur väl lyckades du utvärdera TDD-konceptet och vilka är dina reflektioner?
+
+        p
+            | Jag lyckades inte alls anamma TDD-konceptet när jag byggde min kod för nim.
+            | Jag hade det i bakhuvudet, och tänkte att jag kanske borde ha gjort tester
+            | först, men samtidigt hade jag inte en klar bild av vad som skulle bli av
+            | min kod. Jag hade inte ritningen klar för mig. Jag tänker att det är det
+            | som är min främsta reflektion. Om man ska jobba enligt TDD så måste man veta
+            | vad och hur man ska bygga. Att ha den stora bilden klar för sig helt enkelt.
+            | Först då kan man skriva sina tester, och sen ge sig på att skriva koden.
+            | Sen så är det säkert en vanesak också. Tränar man på att skriva testerna
+            | först så kommer man ju bli bra på det. Jag tycker i alla fall att det verkar
+            | vara en vettig metod.
+
+        h3 Berätta om tankarna kring din klient/server applikation och nämn de tekniker du använder.
+
+        p
+            | Jag tänker mig att jag ska göra spelet Nim. Två spelare turas om att ta
+            | tändstickor ur högar. Den som tar sista stickan förlorar. Då jag är
+            | helt grön på det här med websockets och känner mig mycket mer hemma i php-ramverk
+            | än i js-ramverk, så vet jag ännu inte vad det blir av det. Jag har i alla fall
+            | en tanke om att man ska kunna starta ett nytt spel, eller kunna joina ett
+            | befintligt spel med en spelare i. Spel med fler än två spelare skulle också
+            | kunna vara en möjlighet. Befintliga spel visas i en lista. När det kommer till
+            | tekniker så hoppas jag att det kommer vara möjligt med websockets och javascript.
+            | Jag hoppas kunna hålla det ganska så enkelt, åtminstone till en början. Jag har
+            | skapat en sida för spelet på me-sidan, men där finns ännu bara lite text.
+
+        br
