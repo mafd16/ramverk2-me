@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Martins chattrum</title>
+<link rel="stylesheet" href="client.css">
+</head>
+
+<body>
+<div id="chatten">
+<h1>Martins chattrum</h1>
+<h2>Byggd med WebSocket</h2>
+<p>Var vänlig och håll en god ton.</p>
+
+<form id="form1">
+
+  <p>
+    <label>Välj nickname och anslut till chatten: </label><br>
+    <input id="nickname" type="text" autofocus required>
+    <input id="connect_url" type="hidden" value="ws://localhost:1337/" >
+    <input id="protocol" type="hidden" value="json">
+    <br>
+    <input id="connect" type="button" value="Anslut">
+    <input id="close" type="button" value="Lämna chatten">
+  </p>
+
+  <p>
+    <label>Meddelande: </label><br>
+    <input id="message" type="text">
+    <input id="send_message" type="button" value="Send message">
+  </p>
+
+  <p>
+    <label>Chatt: </label><br>
+    <div id="output" class="output"></div>
+  </p>
+
+</form>
+
+<div>
+    <ul id="userlist">
+    </ul>
+</div>
+
+<script src="client.js"></script>
+</div>
+</body>
+</html>

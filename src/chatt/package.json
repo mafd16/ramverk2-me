@@ -1,0 +1,20 @@
+{
+  "name": "kmom04-chatt",
+  "version": "1.0.0",
+  "description": "A WebSocket chatt for kmom04.",
+  "main": "null",
+  "scripts": {
+    "test": "null",
+    "start": "node server.js",
+    "clean": "rm -rf node_modules package-lock.json"
+  },
+  "keywords": [
+    "websocket"
+  ],
+  "author": "Martin Fagerlund",
+  "license": "MIT",
+  "devDependencies": {
+    "express": "^4.16.2",
+    "ws": "^3.3.1"
+  }
+}

@@ -26,4 +26,9 @@ router.get('/playnim', function(req, res) {
     res.render('playnim', { title: 'Spela Nim' });
 });
 
+/* GET chatt page. */
+router.get('/chatt', function(req, res) {
+    res.render('chatt', { title: 'Martins chatt' });
+});
+
 module.exports = router;
