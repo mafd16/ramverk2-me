@@ -176,7 +176,8 @@ wss.on("connection", (ws/*, req*/) => {
 });
 
 // For checking connection alive
-const interval = setInterval(function ping() {
+//const interval = setInterval(function ping() {
+setInterval(function ping() {
     wss.clients.forEach(function each(ws) {
         if (ws.isAlive === false) {
             return ws.terminate();
