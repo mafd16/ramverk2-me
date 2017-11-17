@@ -13,7 +13,7 @@
     let close       = document.getElementById("close");
     let output      = document.getElementById("output");
     let nickname    = document.getElementById("nickname");
-    let userlist    = document.getElementById("userlist");
+    //let userlist    = document.getElementById("userlist");
 
 
 
@@ -61,7 +61,8 @@
         let now = new Date();
         let timestamp = now.toLocaleTimeString();
 
-        output.innerHTML += `<div class="rightmessage">${timestamp} ${nickname}: <br>${message}<br></div>`;
+        output.innerHTML += `<div class="rightmessage">
+        ${timestamp} ${nickname}: <br>${message}<br></div>`;
         output.scrollTop = output.scrollHeight;
     }
 
@@ -109,10 +110,12 @@
             console.log(event);
             console.log(websocket);
             let msg = JSON.parse(event.data);
+
             if (msg.type == "message") {
-                outputOthers(msg.data, msg.nickname)
+                outputOthers(msg.data, msg.nickname);
             } else {
                 let output = msg.nickname + ": " + msg.data;
+                
                 outputLog(output);
             }
         };

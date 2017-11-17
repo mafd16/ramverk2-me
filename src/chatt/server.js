@@ -29,7 +29,7 @@ const wss = new WebSocket.Server({
 
 // For checking connection alive
 function heartbeat() {
-  this.isAlive = true;
+    this.isAlive = true;
 }
 
 
@@ -101,49 +101,6 @@ function broadcastExcept(ws, data, type, nickname) {
     console.log(`Broadcasted data to ${clients} (${wss.clients.size}) clients.`);
 }
 
-
-
-/**
- * Broadcast the users to everyone.
- *
- * @return {void}
- */
-/*function sendBackUsers(ws, users) {
-    wss.clients.forEach((client) => {
-        console.log("nick: " + client.nickname);
-        //console.log("sendBackUsers: " + client[1]);
-    });
-
-    //console.log(util.inspect(users));
-    //let nyusers = JSON.stringify(users);
-    //console.log("users: " + users);
-    //console.log("nyusers: " + nyusers);
-
-    //console.log("sendBackUsers 0: " + ws);
-    //console.log("sendBackUsers 1: " + users[1]);
-
-    var userlist = [];
-    users.forEach((user) => {
-        userlist.push(user.nickname);
-        console.log(user.nickname);
-    });
-
-
-
-    wss.clients.forEach((client) => {
-        if (client.readyState === WebSocket.OPEN) {
-            if (ws.protocol === "json") {
-                let msg = {
-                    timestamp: Date(),
-                    data: userlist,
-                    type: "userlist"
-                }
-                client.send(JSON.stringify(msg));
-            }
-        }
-    });
-}
-*/
 
 
 // Setup for websocket requests.
@@ -221,7 +178,9 @@ wss.on("connection", (ws/*, req*/) => {
 // For checking connection alive
 const interval = setInterval(function ping() {
     wss.clients.forEach(function each(ws) {
-        if (ws.isAlive === false) return ws.terminate();
+        if (ws.isAlive === false) {
+            return ws.terminate();
+        }
 
         ws.isAlive = false;
         ws.ping('', false, true);

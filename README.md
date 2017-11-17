@@ -37,3 +37,19 @@ docker-compose run node8_alpine npm test
 make test3
 docker-compose run node6_alpine npm test
 ```
+
+
+### Try out the chat
+
+```
+npm start
+```
+
+Then go to ./src/chatt
+
+```
+npm start
+```
+
+You'll find the chat integrated at the page.
+Open the chat in two browsers for full functionality.
