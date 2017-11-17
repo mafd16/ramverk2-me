@@ -115,7 +115,7 @@
                 outputOthers(msg.data, msg.nickname);
             } else {
                 let output = msg.nickname + ": " + msg.data;
-                
+
                 outputLog(output);
             }
         };
