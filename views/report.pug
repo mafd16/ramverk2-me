@@ -175,26 +175,82 @@ block main
         h2 Kmom04
 
         p
-            |
+            | Detta kursmoment blev det lite knep och knåp med. Jag inser att det
+            | kanske inte är optimalt med att vara ute i god tid, fast det finns ju
+            | fördelar med det också. Eftersom man i tidigare kmom har kunnat skjuta
+            | på saker (exempelvis att bygga en server/klient) så blev jag tvungen att
+            | gå tillbaka och kolla på tidigare kmoms krav. Detta också då kmom03
+            | uppdaterades efter att jag hade lämnat in kmom03. Tror iaf att jag har
+            | fått till det okej nu.
 
 
 
         h3 Är du ny på realtidsprogrammering eller har du gjort liknande tidigare?
 
         p
-            |
+            | Jag är helt ny på det här. Det var kul att testa på, och man vill knappt
+            | sluta. Dock så var det lite svårt att greppa vissa koncept, och jag hade
+            | lite svårt att tyda viss dokumentation. Kanske beror det på att det är
+            | just nytt, det brukar vara en ovanesak.
 
         h3 Hur gick det att jobba med konceptet realtidsprogrammering i webben, några reflektioner?
 
         p
-            |
+            | Över lag så gick det bra. Jag utgick från de exempel vi fick med oss.
+            | Det som var riktigt klurigt var att göra enhetstester på server och
+            | klient. Jag fick starta upp servern i en kommandotolk, och köra testerna
+            | i en annan. Då fungerade det. Men så lyckades jag inte göra i min CI-kedja,
+            | och då försökte jag en hel del, med t.ex. npm pretest, hooks och en del annat.
+            | Nu valde jag att kommentera bort de tester som var gjorda mot server/klient
+            | och bara behålla de som är mot min Nim-klass.
 
         h3 Berätta om din chatt som du integrerade i redovisa-sidan.
 
         p
-            |
+            | Som jag skrev ovan så utgick jag från exemplet och byggde därifrån.
+            | Jag la all min kod till chatten i src/chatt, och integrerade sen i redovisa-sidan
+            | genom att flytta clientfilerna så dom fungerade där. Jag använder mig
+            | av json för att skicka data till och från servern, och i json anger jag
+            | timestamp, data (själva meddelandet), type och nickname. Från klienten
+            | skickas två olika sorters meddelanden (type), nämligen info- och message-meddelanden.
+            | I klienten finns även tre olika utskriftsfunktioner. En tar emot info-meddelanden
+            | och printar dom som ren text i browsern. Meddelanden från servern av type
+            | message printas med en div, till höger i chatten, och med grön färg.
+            | Meddelanden som kommer från den egna klienten printas med en div, till
+            | vänster i chatten och med blå färg. Alla meddelanden innehåller tid och
+            | nickname.
+
+        P
+            | Jag började titta på extrauppgifterna, då jag tänkte att jag skulle
+            | ha nytta av dom i mitt nim-spel. För att serverna ska upptäcka klienter
+            | som försvinner så utnyttjade jag funktionaliteten som följde med
+            | ws-paketet. Där skickas en ping/pong var 30-nde sekund, och en funktion
+            | heartbeat utnyttjas. Fås inte något svar så stängs anslutningen. Jag tror
+            | mig ha sett att det funkar, men det var svårt att testa då servern oftast
+            | märker när klienten försvinner. Jag försökte även lista inloggade användare,
+            | men där gick jag tyvärr bet. Jag fick det inte att fungera. Jag tror dock att
+            | jag kommer behöva någon slags listning av användare i mitt spel, så jag
+            | får testa vidare på det.
 
         h3 Berätta om den realtidsfunktionalitet du väljer att integrera i din klient/server applikation.
 
         p
-            |
+            | Först så flyttade jag min applikation till me/app, skapade ett repo på
+            | github och la till en CI-kedja, enligt vad som krävdes i kmom03. Jag la
+            | även till det som krävs för att kunna köra i Docker.
+            | I min applikation så får man som spelare först ange ett nickname, och
+            | starta/joina ett spel. Är man först (spelare 2n+1) så startar man ett spel,
+            | och är man tvåa (spelare 2n+2) så joinar man ett spel. Spelare 1 får upp
+            | spelplanen och en text: "Väntar på spelare två". När spelare två joinar
+            | så startar spelet, och spelare ett får börja ta stickor. Det är så långt jag
+            | har kommit i implementationen.
+
+        P
+            | Tanken är sen att spelarna turas om att ta stickor tills någon vinner.
+            | Så fort någon tar stickor så blir det nästa spelares tur, och det är däri
+            | som realtidsfunktionaliteten ligger. Förhoppningsvis kan jag lägga till
+            | lite animering senare, så att det blir tydligt när turen går över. Just
+            | nu så visas bara ett info-meddelande.
+
+
+        br

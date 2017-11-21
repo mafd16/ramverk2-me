@@ -4,7 +4,7 @@
   "description": "me-sida",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "set DEBUG=redovisa:* & node ./bin/www",
     "test": "nyc --reporter=html --reporter=text mocha test/**/*.js",
     "test-scrutinizer": "nyc --all --reporter=clover mocha 'test/**/*.js'",
     "node9": "docker-compose run node9_alpine npm test",
