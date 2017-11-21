@@ -3,10 +3,46 @@ extends layout
 
 
 block main
-    script(src="/public/javascripts/nim.js")
+    <body>
+    <div id="chatten">
+    <h1>Nim</h1>
+    <p>Den som tar sista stickan förlorar.</p>
 
-    div(class="main")
-        h1 Spela Nim
+    <form id="form1">
+
+    <p>
+        <label>Välj nickname och starta/joina spelet: </label><br>
+        <input id="nickname" type="text" autofocus required>
+        <input id="connect_url" type="hidden" value="ws://localhost:3000/" >
+        <input id="protocol" type="hidden" value="json">
+        <br>
+        <input id="start" type="button" value="Starta/Joina">
+        <!--<input id="join" type="button" value="Joina">-->
+        <input id="close" type="button" value="Lämna spelet">
+        </p>
 
 
-        canvas(id="canvas")
+
+
+        <p>
+        <label>Status: </label><br>
+        <div id="output" class="output"></div>
+        </p>
+
+        </form>
+
+        <div id="gameplan">
+
+        </div>
+
+        <!--<div>
+        <ul id="userlist">
+        </ul>
+        </div>-->
+
+        <div class="spacer"></div>
+
+        <script src="javascripts/client_nim.js"></script>
+        </div>
+        </body>
+        </html>

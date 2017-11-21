@@ -8,6 +8,30 @@ block main
             | Här kommer vi framöver förhoppningsvis kunna spela Nim. Spelet
             | där man turas om att ta tändstickor ur högar. Den som tar sista
             | stickan förlorar.
+
+        P
+            | Implementationen görs enligt följande. Själva spelet Nim ligger
+            | i en class Nim, där det finns variabler (ex antal högar, antal
+            | stickor per hög, vems tur det är, osv) och funktioner (ex changePlayer,
+            | removeMatches).
+
+        P
+            | För att spelet ska funka måste man dra igång spelservern. Den använder
+            | sig av websockets för att koppla upp klienter (spelare). Min plan är
+            | att den ska ha logiken att spelare ett som ansluter startar ett spel.
+            | Spelare två ansluter till första spelet. Spelare tre startar ett nytt
+            | spel, spelare fyra ansluter till spel två, osv. Alternativet som jag
+            | funderade på var att lista alla spel som är igång, och att man kunde
+            | välja vilket spel man ville ansluta till.
+
+        P
+            | Klienten i sin tur målar upp spelplanen, och när spelaren utför något
+            | så skickas meddelanden till servern i applikationsformatet json.
+            | Servern svarar därefter de båda spelarna. Själva realtiden ligger
+            | i att när en spelare gjort sitt drag, så blir det direkt nästa spelares
+            | tur.
+
+
         // - p
         // -     | Här spelar vi Nim. Starta ett spel eller gå med i ett spel.
         // -     | Ni måsta vara två spelare. Så här går det till.
@@ -17,4 +41,8 @@ block main
         // -     | därefter blir det nästa spelares tur. Den som tar sista stickan
         // -     | förlorar.
 
-        // - P <a href="/playnim">Starta nytt spel</a>
+        P
+            | Om spelservern är igång så kan du testa spelet. Om den inte är igång
+            | så kan du starta den själv. Ladda ned koden från Github och kör
+            | npm start. Sen kan du testköra spelet
+            | <a href="/playnim">här</a>. Än så länge kan man bara starta spelet.

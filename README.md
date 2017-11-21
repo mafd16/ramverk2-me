@@ -44,7 +44,10 @@ docker-compose run node6_alpine npm test
 ```
 npm start
 ```
-
+or
+```
+./restart.bat
+```
 Then go to ./src/chatt
 
 ```
@@ -52,4 +55,4 @@ npm start
 ```
 
 You'll find the chat integrated at the page.
-Open the chat in two browsers for full functionality.
+Open the chat in two browsers for test of functionality.
