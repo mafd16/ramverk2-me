@@ -7,6 +7,18 @@ a {
     color: #00b7ff;
 }
 
+#bike1 {
+    width: 160px;
+}
+
+#bike2 {
+    width: 160px;
+}
+
+#bike3 {
+    width: 160px;
+}
+
 figure {
     margin-left: 20px;
     margin-right: 20px;

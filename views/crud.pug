@@ -3,11 +3,38 @@ extends layout
 block main
     div(class="main")
         h1 Databas MongoDB
-        p Här kan du utföra operationer mot databasen.
+        p
+            | Här kan du utföra crud-operationer mot databasen. Databasen
+            | innehåller cyklar.
 
+        h2 Lägg till cykel
+        <form method="POST" id="addbike" action="/crud/add"></form>
 
-        div(class="about-img")
-            <figure>
-                <img id="javascript" src="/images/javascript.PNG" alt="Code">
-                <figcaption>Kan ju funka..</figcaption>
-            </figure>
+        <table style="width:100%">
+            <tr>
+                <th align="center">Märke</th>
+                <th align="center">Växlar</th>
+                <th align="center">Typ</th>
+                <th></th>
+            </tr>
+            <tr>
+                <td>
+                    <input id="bike1" type="text" name="brand" form="addbike" />
+                </td>
+                <td>
+                    <input id="bike2" type="text" name="gears" form="addbike" />
+                </td>
+                <td>
+                    <input id="bike3" type="text" name="type" form="addbike" />
+                </td>
+                <td>
+                    <button form="addbike">Lägg till</button>
+                </td>
+            </tr>
+        </table>
+
+        h2 The bikes in the database
+        each val in message
+            p= val.brand
+            p= val.gears
+            p= val.type
