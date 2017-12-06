@@ -1,62 +1,28 @@
 version: "2"
 services:
     node9:
-        image: "node:9"
-        user: "node"
-        working_dir: /home/node/app
-        environment:
-            - NODE_ENV=production
-            - DBWEBB_PORT=8089
-        volumes:
-            - ./:/home/node/app
-        ports:
-            - "8089:8089"
-        command: "npm start"
-    node8:
-        image: "node:8"
-        user: "node"
-        working_dir: /home/node/app
-        environment:
-            - NODE_ENV=production
-            - DBWEBB_PORT=8088
-        volumes:
-            - ./:/home/node/app
-        ports:
-            - "8088:8088"
-        command: "npm start"
-    node6:
-        image: "node:6"
-        user: "node"
-        working_dir: /home/node/app
-        environment:
-            - NODE_ENV=production
-            - DBWEBB_PORT=8086
-        volumes:
-            - ./:/home/node/app
-        ports:
-            - "8086:8086"
-        command: "npm start"
-    node9_alpine:
         build:
             context: .
-            dockerfile: docker/Dockerfile-node9-alpine
+            dockerfile: Dockerfile
+        user: "node"
+        working_dir: /app
+        environment:
+            - NODE_ENV=production
+            - DBWEBB_PORT=5000
+            - DEBUG=redovisa:*
         volumes:
-            - ./:/app/
+            - ./:/app
         ports:
-            - "3000:3000"
-    node8_alpine:
-        build:
-            context: .
-            dockerfile: docker/Dockerfile-node8-alpine
-        volumes:
-            - ./:/app/
+            - "5000:5000"
+        links:
+            - mongodb
+        command: "npm start"
+
+    mongodb:
+        image: mongo
+        container_name: "mongodb_redovisa"
+        environment:
+            - MONGO_DATA_DIR=/data/db
         ports:
-            - "3001:3001"
-    node6_alpine:
-        build:
-            context: .
-            dockerfile: docker/Dockerfile-node6-alpine
-        volumes:
-            - ./:/app/
-        ports:
-            - "3002:3002"
+            - 27017:27017
+        command: mongod

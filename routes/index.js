@@ -31,4 +31,9 @@ router.get('/chatt', function(req, res) {
     res.render('chatt', { title: 'Martins chatt' });
 });
 
+/* GET database page. */
+router.get('/crud', function(req, res) {
+    res.render('crud', { title: 'Databas' });
+});
+
 module.exports = router;
