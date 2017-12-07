@@ -137,13 +137,41 @@ router.post('/crud/fromedit', async (req, res) => {
         const col = await db.collection("bikes");
         await col.updateOne({ _id: o_id }
             , {brand: editBrand, gears: editGears, type: editType});
-        const result = await col.find().toArray();
+        //const result = await col.find().toArray();
         await db.close();
 
-        res.render('crud', { title: 'Databas', message: result });
+        res.redirect("/crud");
+        //res.render('crud', { title: 'Databas', message: result });
     } catch (err) {
         console.log(err);
         res.render('crud', { title: 'Databas', data: err });
+    }
+});
+
+/* Database page Delete a bike. */
+router.get('/delete/:id', async (req, res) => {
+    // MongoDB
+    var mongo = require("mongodb").MongoClient;
+    var mongo2 = require("mongodb");
+    // The dsn
+    dsn =  process.env.DBWEBB_DSN || "mongodb://mongodb_redovisa:27017/vehicles";
+    // The bike to edit (route params)
+    var bikeId = req.params.id;
+
+    console.log("Deleting bike: " + bikeId);
+
+    var o_id = new mongo2.ObjectID(bikeId);
+
+    try {
+        const db  = await mongo.connect(dsn);
+        const col = await db.collection("bikes");
+        await col.deleteOne( { _id: o_id } );
+        await db.close();
+        res.redirect("/crud");
+        //res.render('crudedit', { title: 'Databas', message: result });
+    } catch (err) {
+        console.log(err);
+        res.render('crudedit', { title: 'Databas', data: err });
     }
 });
 

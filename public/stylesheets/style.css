@@ -41,6 +41,10 @@ h1 {
     text-align: center;
 }
 
+.space {
+    margin-left: 10px;
+}
+
 #tranas {
     border-radius: 15px;
     max-width: 100%;
