@@ -1,0 +1,55 @@
+extends layout
+
+block main
+    div(class="main")
+        h1 Databas MongoDB
+        p Här kan du ändra en cykel i databasen.
+
+        h2 Ändra cykel
+        <form method="POST" id="changebike" action="/crud/fromedit"></form>
+
+        each val in message
+            input(
+                type="hidden"
+                name="id"
+                form="changebike"
+                value= val._id
+            )
+
+        table
+            tr
+                th Märke
+                th Växlar
+                th Typ
+
+            tr
+                each val in message
+                    td
+                        input(
+                            id="bike1"
+                            type="text"
+                            name="brand"
+                            value= val.brand
+                            form="changebike"
+                        )
+
+                    td
+                        input(
+                            id="bike2"
+                            type="text"
+                            name="gears"
+                            value= val.gears
+                            form="changebike"
+                        )
+
+                    td
+                        input(
+                            id="bike3"
+                            type="text"
+                            name="type"
+                            value= val.type
+                            form="changebike"
+                        )
+
+                    td
+                        <button form="changebike">Ändra</button>

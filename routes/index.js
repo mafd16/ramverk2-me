@@ -88,4 +88,63 @@ router.post('/crud/add', async (req, res) => {
     }
 });
 
+/* to Database page Edit a bike. */
+router.get('/edit/:id', async (req, res) => {
+    // MongoDB
+    var mongo = require("mongodb").MongoClient;
+    var mongo2 = require("mongodb");
+    // The dsn
+    dsn =  process.env.DBWEBB_DSN || "mongodb://mongodb_redovisa:27017/vehicles";
+    // The bike to edit (route params)
+    var bikeId = req.params.id;
+
+    console.log("Going to edit bike: " + bikeId);
+
+    var o_id = new mongo2.ObjectID(bikeId);
+
+    try {
+        const db  = await mongo.connect(dsn);
+        const col = await db.collection("bikes");
+        const result = await col.find( { _id: o_id } ).toArray();
+        await db.close();
+
+        res.render('crudedit', { title: 'Databas', message: result });
+    } catch (err) {
+        console.log(err);
+        res.render('crudedit', { title: 'Databas', data: err });
+    }
+});
+
+/* from Database page Edit a bike. */
+router.post('/crud/fromedit', async (req, res) => {
+    // MongoDB
+    var mongo = require("mongodb").MongoClient;
+    var mongo2 = require("mongodb");
+    // The dsn
+    dsn =  process.env.DBWEBB_DSN || "mongodb://mongodb_redovisa:27017/vehicles";
+    // The edited bike (POST variables)
+    var editBrand = req.body.brand,
+        editGears = req.body.gears,
+        editType  = req.body.type,
+        editId    = req.body.id;
+
+    console.log("Editing bike: " + editId);
+
+    var o_id = new mongo2.ObjectID(editId);
+
+    try {
+        const db  = await mongo.connect(dsn);
+        const col = await db.collection("bikes");
+        await col.updateOne({ _id: o_id }
+            , {brand: editBrand, gears: editGears, type: editType});
+        const result = await col.find().toArray();
+        await db.close();
+
+        res.render('crud', { title: 'Databas', message: result });
+    } catch (err) {
+        console.log(err);
+        res.render('crud', { title: 'Databas', data: err });
+    }
+});
+
 module.exports = router;

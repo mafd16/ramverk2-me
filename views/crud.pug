@@ -19,13 +19,13 @@ block main
             </tr>
             <tr>
                 <td>
-                    <input id="bike1" type="text" name="brand" form="addbike" />
+                    <input required id="bike1" type="text" name="brand" form="addbike" />
                 </td>
                 <td>
-                    <input id="bike2" type="text" name="gears" form="addbike" />
+                    <input required id="bike2" type="text" name="gears" form="addbike" />
                 </td>
                 <td>
-                    <input id="bike3" type="text" name="type" form="addbike" />
+                    <input required id="bike3" type="text" name="type" form="addbike" />
                 </td>
                 <td>
                     <button form="addbike">Lägg till</button>
@@ -35,18 +35,16 @@ block main
 
         h2 Cyklar i databasen
 
-        <table>
-            <tr>
-                <th align="center">Märke</th>
-                <th align="center">Växlar</th>
-                <th align="center">Typ</th>
-                <th></th>
-            </tr>
-
-        each val in message
+        table(class="bikes")
             tr
-                th= val.brand
-                th= val.gears
-                th= val.type
+                th Märke
+                th Växlar
+                th Typ
 
-        </table>
+            each val in message
+                tr
+                    td= val.brand
+                    td= val.gears
+                    td= val.type
+                    td
+                        a(href="/edit/" + val._id) Ändra

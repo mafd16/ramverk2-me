@@ -19,6 +19,19 @@ a {
     width: 160px;
 }
 
+.bikes td {
+    min-width: 160px;
+    text-align: center;
+}
+
+.bikes th {
+    min-width: 160px;
+}
+
+.bikes tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
 figure {
     margin-left: 20px;
     margin-right: 20px;
