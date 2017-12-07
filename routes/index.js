@@ -1,5 +1,9 @@
 var express = require('express');
 var router = express.Router();
+var bodyParser = require("body-parser");
+
+router.use(bodyParser.json()); // for parsing application/json
+router.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 
 // MongoDB
@@ -47,31 +51,41 @@ router.get('/crud', async (req, res) => {
     try {
         const db  = await mongo.connect(dsn);
         const col = await db.collection("bikes");
-        //await col.insert({brand: "Merida", gears: "Shimano", type: "mtb" });
         const result = await col.find().toArray();
         await db.close();
-        //res.json(result);
-        result2 = [];
-        for (var i = 0; i < result.length; i++) {
-            var k = 0;
-            for (var j = 0; j < result[i].length; j++) {
-                if (k >= 1) {
-                    result2.push(result[i][j]);
-                }
 
-            }
-
-        }
-        console.log("Result: " + result);
-        //res.json(result);
-        result2 = JSON.stringify(result);
         res.render('crud', { title: 'Databas', message: result });
     } catch (err) {
         console.log(err);
-        //response.json(err);
         res.render('crud', { title: 'Databas', data: err });
     }
 });
 
+/* Database page, POST new bike. */
+router.post('/crud/add', async (req, res) => {
+    // MongoDB
+    var mongo = require("mongodb").MongoClient;
+    // The dsn
+    dsn =  process.env.DBWEBB_DSN || "mongodb://mongodb_redovisa:27017/vehicles";
+    // The posted bike (POST variables)
+    var newBrand = req.body.brand,
+        newGears = req.body.gears,
+        newType  = req.body.type;
+
+    console.log("New bike: " + newBrand + ", " + newGears + ", " + newType);
+
+    try {
+        const db  = await mongo.connect(dsn);
+        const col = await db.collection("bikes");
+        await col.insertOne({brand: newBrand, gears: newGears, type: newType });
+        const result = await col.find().toArray();
+        await db.close();
+
+        res.render('crud', { title: 'Databas', message: result });
+    } catch (err) {
+        console.log(err);
+        res.render('crud', { title: 'Databas', data: err });
+    }
+});
 
 module.exports = router;

@@ -10,7 +10,7 @@ block main
         h2 Lägg till cykel
         <form method="POST" id="addbike" action="/crud/add"></form>
 
-        <table style="width:100%">
+        <table>
             <tr>
                 <th align="center">Märke</th>
                 <th align="center">Växlar</th>
@@ -33,8 +33,20 @@ block main
             </tr>
         </table>
 
-        h2 The bikes in the database
+        h2 Cyklar i databasen
+
+        <table>
+            <tr>
+                <th align="center">Märke</th>
+                <th align="center">Växlar</th>
+                <th align="center">Typ</th>
+                <th></th>
+            </tr>
+
         each val in message
-            p= val.brand
-            p= val.gears
-            p= val.type
+            tr
+                th= val.brand
+                th= val.gears
+                th= val.type
+
+        </table>
