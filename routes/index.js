@@ -2,8 +2,10 @@ var express = require('express');
 var router = express.Router();
 var bodyParser = require("body-parser");
 
-router.use(bodyParser.json()); // for parsing application/json
-router.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+// for parsing application/json
+router.use(bodyParser.json());
+// for parsing application/x-www-form-urlencoded
+router.use(bodyParser.urlencoded({ extended: true }));
 
 
 // MongoDB
@@ -45,13 +47,15 @@ router.get('/chatt', function(req, res) {
 router.get('/crud', async (req, res) => {
     // MongoDB
     var mongo = require("mongodb").MongoClient;
+
     // The dsn
-    dsn =  process.env.DBWEBB_DSN;// || "mongodb://mongodb_redovisa:27017/vehicles";
+    var dsn =  process.env.DBWEBB_DSN || "mongodb://mongodb_redovisa:27017/vehicles";
 
     try {
         const db  = await mongo.connect(dsn);
         const col = await db.collection("bikes");
         const result = await col.find().toArray();
+
         await db.close();
 
         res.render('crud', { title: 'Databas', message: result });
@@ -65,8 +69,9 @@ router.get('/crud', async (req, res) => {
 router.post('/crud/add', async (req, res) => {
     // MongoDB
     var mongo = require("mongodb").MongoClient;
+
     // The dsn
-    dsn =  process.env.DBWEBB_DSN;// || "mongodb://mongodb_redovisa:27017/vehicles";
+    var dsn =  process.env.DBWEBB_DSN || "mongodb://mongodb_redovisa:27017/vehicles";
     // The posted bike (POST variables)
     var newBrand = req.body.brand,
         newGears = req.body.gears,
@@ -77,8 +82,10 @@ router.post('/crud/add', async (req, res) => {
     try {
         const db  = await mongo.connect(dsn);
         const col = await db.collection("bikes");
+
         await col.insertOne({brand: newBrand, gears: newGears, type: newType });
         const result = await col.find().toArray();
+
         await db.close();
 
         res.render('crud', { title: 'Databas', message: result });
@@ -93,19 +100,21 @@ router.get('/edit/:id', async (req, res) => {
     // MongoDB
     var mongo = require("mongodb").MongoClient;
     var mongo2 = require("mongodb");
+
     // The dsn
-    dsn =  process.env.DBWEBB_DSN;// || "mongodb://mongodb_redovisa:27017/vehicles";
+    var dsn =  process.env.DBWEBB_DSN || "mongodb://mongodb_redovisa:27017/vehicles";
     // The bike to edit (route params)
     var bikeId = req.params.id;
 
     console.log("Going to edit bike: " + bikeId);
 
-    var o_id = new mongo2.ObjectID(bikeId);
+    var objectId = new mongo2.ObjectID(bikeId);
 
     try {
         const db  = await mongo.connect(dsn);
         const col = await db.collection("bikes");
-        const result = await col.find( { _id: o_id } ).toArray();
+        const result = await col.find( { _id: objectId } ).toArray();
+
         await db.close();
 
         res.render('crudedit', { title: 'Databas', message: result });
@@ -120,8 +129,9 @@ router.post('/crud/fromedit', async (req, res) => {
     // MongoDB
     var mongo = require("mongodb").MongoClient;
     var mongo2 = require("mongodb");
+
     // The dsn
-    dsn =  process.env.DBWEBB_DSN;// || "mongodb://mongodb_redovisa:27017/vehicles";
+    var dsn =  process.env.DBWEBB_DSN || "mongodb://mongodb_redovisa:27017/vehicles";
     // The edited bike (POST variables)
     var editBrand = req.body.brand,
         editGears = req.body.gears,
@@ -130,12 +140,13 @@ router.post('/crud/fromedit', async (req, res) => {
 
     console.log("Editing bike: " + editId);
 
-    var o_id = new mongo2.ObjectID(editId);
+    var objectId = new mongo2.ObjectID(editId);
 
     try {
         const db  = await mongo.connect(dsn);
         const col = await db.collection("bikes");
-        await col.updateOne({ _id: o_id }
+
+        await col.updateOne({ _id: objectId }
             , {brand: editBrand, gears: editGears, type: editType});
         //const result = await col.find().toArray();
         await db.close();
@@ -153,19 +164,21 @@ router.get('/delete/:id', async (req, res) => {
     // MongoDB
     var mongo = require("mongodb").MongoClient;
     var mongo2 = require("mongodb");
+
     // The dsn
-    dsn =  process.env.DBWEBB_DSN;// || "mongodb://mongodb_redovisa:27017/vehicles";
+    var dsn =  process.env.DBWEBB_DSN || "mongodb://mongodb_redovisa:27017/vehicles";
     // The bike to edit (route params)
     var bikeId = req.params.id;
 
     console.log("Deleting bike: " + bikeId);
 
-    var o_id = new mongo2.ObjectID(bikeId);
+    var objectId = new mongo2.ObjectID(bikeId);
 
     try {
         const db  = await mongo.connect(dsn);
         const col = await db.collection("bikes");
-        await col.deleteOne( { _id: o_id } );
+
+        await col.deleteOne( { _id: objectId } );
         await db.close();
         res.redirect("/crud");
         //res.render('crudedit', { title: 'Databas', message: result });
