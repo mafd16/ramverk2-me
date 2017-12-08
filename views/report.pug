@@ -294,17 +294,38 @@ block main
         h3 Reflektera över skillnader och likheter mellan relationsdatabaser och databaser inom NoSQL.
 
         p
-            | 
+            | Den stora skillnaden som jag ser är att man i NoSQL kan skapa nya
+            | nycklar (motsvarande kolumner i SQL) precis som man vill. Man borde
+            | alltså kunna låta en användare skicka in vilka key/value-par som helst.
+            | I SQL är man bunden till att skriva till de kolumner som man har skapat.
+            | Visserligen skulle man i SQL kunna bygga upp den möjligheten också,
+            | men då skulle man ta en omväg känns det som.
+            | Likheterna är väl grundstrukturen, databas-collection-dokument som
+            | kan jämföras med databas-tabell-rad.
+            | Sen är det många saker som jag ännu inte har koll på i NoSQL och
+            | MongoDB, exempelvis hur användare funkar. Det finns nog en hel del
+            | att lära sig.
 
         h3 Vilka är dina tankar om asynkron programmering med JavaScript?
 
         p
-            | test
+            | I så här enkla konstruktioner som vi jobbat med i detta kurs-moment
+            | så känns det mest bara omständigt. Jag tror fördelarna med
+            | asynkron programmering kommer när man kan utföra operationer parallellt.
+            | Att då slippa vänta in tidigare händelser verkar vettigt.
+
 
         h3 Hur känner du för Docker och det sättet vi jobbar med tjänster i kontainrar?
 
         p
-            | test
+            | På ett sätt så gillar jag det. Det förenklar ju att köra koden på
+            | olika maskiner, och framför allt då när vår kod ska rättas i kurserna.
+            | Sen så ser jag även problem med det. Jag tänker främst på nu när
+            | jag ska redovisa detta, och vill köra upp min redovisa-sida på
+            | internet. Jag tänker att jag då måste ändra en massa för att få till
+            | databas-funktionaliteten. Så det känns som att vi mest använder
+            | docker för att underlätta rättning, och därmed tappar enkelheten att
+            | deploya online. 
 
 
 

@@ -41,15 +41,16 @@ block main
                 th Växlar
                 th Typ
 
-            each val in message
-                tr
-                    td= val.brand
-                    td= val.gears
-                    td= val.type
-                    td
-                        a(class="space" href="/edit/" + val._id) Ändra
-                        a(class="space" href="/delete/" + val._id) Radera
+            if message
+                each val in message
+                    tr
+                        td= val.brand
+                        td= val.gears
+                        td= val.type
+                        td
+                            a(class="space" href="/edit/" + val._id) Ändra
+                            a(class="space" href="/delete/" + val._id) Radera
+
 
         br
         br
-        
