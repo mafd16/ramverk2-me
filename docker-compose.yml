@@ -9,6 +9,7 @@ services:
         environment:
             - NODE_ENV=production
             - DBWEBB_PORT=5000
+            - DBWEBB_DSN=mongodb://mongodb_redovisa:27017/vehicles
             - DEBUG=redovisa:*
         volumes:
             - ./:/app

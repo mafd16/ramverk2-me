@@ -46,7 +46,7 @@ router.get('/crud', async (req, res) => {
     // MongoDB
     var mongo = require("mongodb").MongoClient;
     // The dsn
-    dsn =  process.env.DBWEBB_DSN || "mongodb://mongodb_redovisa:27017/vehicles";
+    dsn =  process.env.DBWEBB_DSN;// || "mongodb://mongodb_redovisa:27017/vehicles";
 
     try {
         const db  = await mongo.connect(dsn);
@@ -66,7 +66,7 @@ router.post('/crud/add', async (req, res) => {
     // MongoDB
     var mongo = require("mongodb").MongoClient;
     // The dsn
-    dsn =  process.env.DBWEBB_DSN || "mongodb://mongodb_redovisa:27017/vehicles";
+    dsn =  process.env.DBWEBB_DSN;// || "mongodb://mongodb_redovisa:27017/vehicles";
     // The posted bike (POST variables)
     var newBrand = req.body.brand,
         newGears = req.body.gears,
@@ -94,7 +94,7 @@ router.get('/edit/:id', async (req, res) => {
     var mongo = require("mongodb").MongoClient;
     var mongo2 = require("mongodb");
     // The dsn
-    dsn =  process.env.DBWEBB_DSN || "mongodb://mongodb_redovisa:27017/vehicles";
+    dsn =  process.env.DBWEBB_DSN;// || "mongodb://mongodb_redovisa:27017/vehicles";
     // The bike to edit (route params)
     var bikeId = req.params.id;
 
@@ -121,7 +121,7 @@ router.post('/crud/fromedit', async (req, res) => {
     var mongo = require("mongodb").MongoClient;
     var mongo2 = require("mongodb");
     // The dsn
-    dsn =  process.env.DBWEBB_DSN || "mongodb://mongodb_redovisa:27017/vehicles";
+    dsn =  process.env.DBWEBB_DSN;// || "mongodb://mongodb_redovisa:27017/vehicles";
     // The edited bike (POST variables)
     var editBrand = req.body.brand,
         editGears = req.body.gears,
@@ -154,7 +154,7 @@ router.get('/delete/:id', async (req, res) => {
     var mongo = require("mongodb").MongoClient;
     var mongo2 = require("mongodb");
     // The dsn
-    dsn =  process.env.DBWEBB_DSN || "mongodb://mongodb_redovisa:27017/vehicles";
+    dsn =  process.env.DBWEBB_DSN;// || "mongodb://mongodb_redovisa:27017/vehicles";
     // The bike to edit (route params)
     var bikeId = req.params.id;
 
