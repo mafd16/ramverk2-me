@@ -11,6 +11,12 @@
 
 Me-page for the course Ramverk2 at Blekinge Institute of Technology
 
+This page is built with node.js and the framework [express](https://expressjs.com/).
+As a template engine I am using [pug](https://pugjs.org). During development, I have
+been using [Docker](https://www.docker.com/). For the Nim-game and chat, I am using
+websockets through the npm package [ws](https://www.npmjs.com/package/ws). The
+database-page is using [MongoDB](https://www.mongodb.com/).
+
 ### Local development environment
 
 Install the development tools and execute the validation tools and the testsuite.
