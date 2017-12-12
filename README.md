@@ -11,54 +11,134 @@
 
 Me-page for the course Ramverk2 at Blekinge Institute of Technology
 
+
+## Table of Contents
+
+!!!!!!!!!!!!!!
+
+
+## Techniques used
+
 This page is built with node.js and the framework [express](https://expressjs.com/).
 As a template engine I am using [pug](https://pugjs.org). During development, I have
 been using [Docker](https://www.docker.com/). For the Nim-game and chat, I am using
-websockets through the npm package [ws](https://www.npmjs.com/package/ws). The
+websockets through the package [ws](https://www.npmjs.com/package/ws). The
 database-page is using [MongoDB](https://www.mongodb.com/).
 
-### Local development environment
 
-Install the development tools and execute the validation tools and the testsuite.
+## Installation !!!TEST!!!
 
-```
-make install
-make test
-```
-
-### Run tests in Docker
-
-Use one of the following make or docker-compose commands.
+Clone the repository
 
 ```
-# node 9 alpine
-make test1
-docker-compose run node9_alpine npm test
+git clone https://github.com/mafd16/ramverk2-me.git
+```
 
-# node 8 alpine
-make test2
-docker-compose run node8_alpine npm test
+Then run
 
-# node 6 alpine
-make test3
-docker-compose run node6_alpine npm test
+```
+cd ramverk2-me
+npm install
 ```
 
 
-### Try out the chat
+## Local operation
 
-```
-npm start
-```
-or
-```
-./restart.bat
-```
-Then go to ./src/chatt
+### Start server locally
+
+The server starts at port 5000. To use another port, set the environment
+variable DBWEBB_PORT (not recommended if you would like to test the Nim-game
+or the chat locally). Run
 
 ```
 npm start
 ```
 
-You'll find the chat integrated at the page.
-Open the chat in two browsers for test of functionality.
+Then check out the page in your browser at localhost:5000 (or at the value of localhost:DBWEBB_PORT if set).
+If you have problems starting the server, try killing all node processes first,
+with
+
+```
+taskkill /f /im node.exe
+```
+
+### Try out the Nim-game locally
+
+At the route /nim you will find the landing-page for the project. The project
+is the game [Nim](https://en.wikipedia.org/wiki/Nim). At the route /playnim
+you can try out the game (may still be under development). To try out the
+game, you need to start the game server. The game can be cloned from
+[GitHub](https://github.com/mafd16/nim). To start the game server, run
+
+```
+npm start
+```
+
+The game server starts at port 3000, unless the environment variable DBWEBB_PORT
+is set. In that case, it will try to start at DBWEBB_PORT. This may interfere
+with the local redovisa server (see Start server locally above).
+
+### Try out the chat locally
+
+At the route /chatt you will find, thats right, the chat. For the chat to
+operate, you need to start the chat server. Go to src/chatt and run
+
+```
+npm start
+```
+
+The chat starts at port 1337, unless the environment variable DBWEBB_PORT
+is set. In that case, it will try to start at DBWEBB_PORT. This may interfere
+with the local redovisa server (see Start server locally above).
+
+To really try out the chat, open the route /chatt in two browser windows and
+start chatting.
+
+### Try out the database locally
+
+This feature is not implemented. To try out the database, see "Start
+redovisa-server and MongoDB database" below.
+
+
+## Operation in Docker images
+
+### Start redovisa-server and MongoDB database
+
+Make sure [Docker](https://www.docker.com/) is installed and is running. To
+start the redovisa server and MongoDB database, run
+
+```
+npm run start-docker
+```
+
+Open your browser and go to localhost:5000 to visit the redovisa page. To try
+out the database, go to localhost:5000/crud.
+
+
+## Run tests
+
+### Run tests locally
+
+```
+npm run test
+npm run test-all
+```
+
+### Run tests in Docker containers !!!TEST!!!
+
+Run some of the following for unit-tests in docker
+
+```
+npm run test-node9
+npm run test-node8
+npm run test-node6
+```
+
+
+## Summary of ports
+
+The redovisa page will start at port 5000 or DBWEBB_PORT.
+The Nim game server starts at port 3000 or DBWEBB_PORT (not included in this
+repository, se more info above).
+The chat starts at port 1337 or DBWEBB_PORT.
+The MongoDB is listening on port 27017.

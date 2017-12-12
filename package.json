@@ -1,16 +1,21 @@
 {
   "name": "redovisa",
-  "version": "3.0.4",
+  "version": "6.0.0",
   "description": "me-sida",
   "private": true,
   "scripts": {
     "start": "set DEBUG=redovisa:* & node ./bin/www",
+    "start-docker": "docker-compose up",
     "test": "nyc --reporter=html --reporter=text mocha test/**/*.js",
+    "test-all": "npm run htmlhint & npm run stylelint & npm run eslint & npm test",
     "test-scrutinizer": "nyc --all --reporter=clover mocha 'test/**/*.js'",
-    "node9": "docker-compose run node9_alpine npm test",
-    "node8": "docker-compose run node8_alpine npm test",
-    "node6": "docker-compose run node6_alpine npm test",
-    "report-codecov": "nyc report --reporter=lcov > coverage.lcov && codecov"
+    "test-node9": "docker-compose -f docker-compose-test.yml run node9_alpine npm test",
+    "test-node8": "docker-compose -f docker-compose-test.yml run node8_alpine npm test",
+    "test-node6": "docker-compose -f docker-compose-test.yml run node6_alpine npm test",
+    "report-codecov": "nyc report --reporter=lcov > coverage.lcov && codecov",
+    "htmlhint": "node_modules/.bin/htmlhint --ignore build/**,node_modules/**,coverage/** | grep -v 'Config loaded:'",
+    "stylelint":  "node_modules/.bin/stylelint **/*.css --ignore-path .gitignore",
+    "eslint": "node_modules/.bin/eslint . --ignore-path .gitignore"
   },
   "author": "Martin Fagerlund",
   "dependencies": {
