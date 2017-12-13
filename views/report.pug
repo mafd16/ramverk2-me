@@ -338,19 +338,64 @@ block main
         h3 Reflektera över vikten av infrastruktur för moduler för ett programmeringsspråk.
 
         p
-            |
+            | Jag antar att frågan syftar på infrastruktur exempelvis npmjs.com.
+            | Om vi tänker oss att det inte fanns sådan infrastruktur, så tänker jag
+            | att vi skulle få söka efter moduler på ungefär samma sätt som idag.
+            | Däremot skulle själva installationen bli mer manuell. Det skulle
+            | därefter krångla till det ordentligt när vi använder vår CI-kedja,
+            | som förmodligen skulle behöva manuella instruktioner för att kunna
+            | hämta de moduler som behövs. Så ur den synpunkten är det viktigt med
+            | infrastruktur.
+
+        P
+            | Sen tänker jag även på issues-forumet för varje modul, som finns på
+            | GitHub. Den är en bra samlingspunkt för problem och lösningar
+            | kopplade till modulen. Utan den hade problem och lösningar funnits
+            | på mer skilda ställen, än vad det är idag.
+
+        P
+            | Min tredje tanke är att man som programmerare inte skulle använda
+            | andras kod/moduler lika mycket som man gör idag. Om det skulle vara
+            | bättre eller sämre kan man diskutera. Många skulle förmodligen
+            | skriva mer kod själva och på så sätt bli bättre, medans andra
+            | säkert skulle fastna i problem och inte komma framåt, och därmed
+            | inte utvecklas lika fort som dom kanske gör idag.
 
         h3 Vill du ge dig på att förklara att just npm är den tjänsten som växt snabbast av de modulerkataloger som presenteras på webbplatsen “Module Counts”?
 
         p
-            |
+            | Jag tror inte jag har alla svar till varför det är så. Men det är
+            | ändå tydligt att populariteten för JavaScript påverkar. Att npm
+            | är störst är inte så konstigt då JavaScript är ett av de vanligaste
+            | språken. Sen kan man fundera på om npm i sig självt är bättre på
+            | något sätt jämfört med liknande tjänster för andra språk. Det skulle
+            | vara intressant att undersöka.
 
         h3 Reflektera över hur arbetet gick att välja, separera, publisera och sedan åter integrera module i din applikation.
 
         p
-            |
+            | Jag valde min nim-klass som innehåller grunden till mitt nim-spel.
+            | Att det blev den tror jag kanske var ett taktiskt val, då jag trodde
+            | det skulle innebära minst problem. Jag hade innan även kikat på npm
+            | och hittat liknande moduler, så det kändes ändå inte helt fel. Där
+            | hade jag också full täckning gällande tester.
+
+        P
+            | Att separera, publicera och åter integrera gick egentligen helt
+            | smärtfritt. Visst, lite småsaker var det väl som krånglade, men inget
+            | som jag inte kunde lösa relativt snabbt och enkelt.
 
         h3 Sista uppgiften om att dokumentera och färdigställa redovisa-sidan, tog det mycket tid eller hade du allt klart?
 
         p
-            | 
+            | Denna uppgiften trodde jag skulle vara enkel, men det visade sig
+            | att den tog en massa tid, och krånglade en hel del. Jag kände inte
+            | att det bara var att dokumentera, utan fick även trixa en hel del
+            | för att uppfylla de kraven som nu ställdes. Till exempel tester,
+            | där jag hade gjort tester som under kursens gång flyttats först
+            | till appen, och sen till modulen. Det blev att jag skapade några
+            | nya tester till redovisa-sidan. Sen fick jag nya fel i min CI-kedja.
+            | Lyckades lösa ett i Travis, och fick samtidigt ett nytt i Scrutinizer.
+            | Sen fick jag lägga en hel del tid på att testa att mina
+            | README-instruktioner verkligen fungerade. Så det blev en del jobb.
+            | Fast det var säkert nyttigt det också, så här i efterhand. 
