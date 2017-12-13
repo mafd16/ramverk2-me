@@ -3,7 +3,6 @@
 
 [![Build Status](https://travis-ci.org/mafd16/ramverk2-me.svg)](https://travis-ci.org/mafd16/ramverk2-me)
 [![BCH compliance](https://bettercodehub.com/edge/badge/mafd16/ramverk2-me?branch=master)](https://bettercodehub.com/)
-[![codecov](https://codecov.io/gh/mafd16/ramverk2-me/branch/master/graph/badge.svg)](https://codecov.io/gh/mafd16/ramverk2-me)
 [![Maintainability](https://api.codeclimate.com/v1/badges/1554ec25f13bba2d25db/maintainability)](https://codeclimate.com/github/mafd16/ramverk2-me/maintainability)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mafd16/ramverk2-me/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/mafd16/ramverk2-me/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/mafd16/ramverk2-me/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/mafd16/ramverk2-me/?branch=master)
@@ -31,11 +30,11 @@ Me-page for the course Ramverk2 at Blekinge Institute of Technology
 
 ## Techniques used
 
-This page is built with node.js and the framework [express](https://expressjs.com/).
-As a template engine I am using [pug](https://pugjs.org). During development, I have
-been using [Docker](https://www.docker.com/). For the Nim-game and chat, I am using
-websockets through the package [ws](https://www.npmjs.com/package/ws). The
-database-page is using [MongoDB](https://www.mongodb.com/).
+This page is built with node.js and the framework [express](https://expressjs.com/).  
+As a template engine I am using [pug](https://pugjs.org).  
+During development, I have been using [Docker](https://www.docker.com/).  
+For the Nim-game and chat, I am using websockets through the package [ws](https://www.npmjs.com/package/ws).  
+The database-page is using [MongoDB](https://www.mongodb.com/).
 
 
 ## Installation
@@ -82,6 +81,7 @@ game, you need to start the game server. The game can be cloned from
 [GitHub](https://github.com/mafd16/nim). To start the game server, run
 
 ```
+npm install
 npm start
 ```
 
@@ -94,6 +94,7 @@ At the route /chatt you will find, thats right, the chat. For the chat to
 operate, you need to start the chat server. Go to src/chatt and run
 
 ```
+npm install
 npm start
 ```
 
@@ -145,11 +146,8 @@ npm run test-node8
 
 ## Summary of ports
 
-The redovisa page will start at port 5000 or DBWEBB_PORT.
-
+The redovisa page will start at port 5000 or DBWEBB_PORT.  
 The Nim game server starts at port 3000 or DBWEBB_PORT (not included in this
-repository, se more info above).
-
-The chat starts at port 1337 or DBWEBB_PORT.
-
-The MongoDB is listening on port 27017.
+repository, se more info above).  
+The chat starts at port 1337 or DBWEBB_PORT.  
+The MongoDB is listening on port 27017.  
