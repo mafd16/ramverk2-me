@@ -8,7 +8,7 @@
     "start-docker": "docker-compose up",
     "test": "nyc --reporter=html --reporter=text mocha test/**/*.js",
     "test-all": "npm run htmlhint & npm run stylelint & npm run eslint & npm test",
-    "test-scrutinizer": "nyc --all --reporter=clover mocha 'test/**/*.js'",
+    "test-scrutinizer": "nyc --all --reporter=clover mocha test/**/*.js",
     "test-node9": "docker-compose -f docker-compose-test.yml run node9_alpine npm test",
     "test-node8": "docker-compose -f docker-compose-test.yml run node8_alpine npm test",
     "report-codecov": "nyc report --reporter=lcov > coverage.lcov && codecov",

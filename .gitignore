@@ -28,3 +28,6 @@ node_modules
 
 # Debug log from npm
 npm-debug.log
+
+# This file creates a bug in Travis
+package-lock.json
