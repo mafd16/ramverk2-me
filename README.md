@@ -14,7 +14,19 @@ Me-page for the course Ramverk2 at Blekinge Institute of Technology
 
 ## Table of Contents
 
-!!!!!!!!!!!!!!
++ Techniques used
++ Installation
++ Local operation
+    + Start server locally
+    + Try out the Nim-game locally
+    + Try out the chat locally
+    + Try out the database locally
++ Operation in Docker images
+    + Start redovisa-server and MongoDB database
++ Run tests
+    + Run tests locally
+    + Run tests in Docker containers
++ Summary of ports
 
 
 ## Techniques used
@@ -26,7 +38,7 @@ websockets through the package [ws](https://www.npmjs.com/package/ws). The
 database-page is using [MongoDB](https://www.mongodb.com/).
 
 
-## Installation !!!TEST!!!
+## Installation
 
 Clone the repository
 
@@ -47,8 +59,7 @@ npm install
 ### Start server locally
 
 The server starts at port 5000. To use another port, set the environment
-variable DBWEBB_PORT (not recommended if you would like to test the Nim-game
-or the chat locally). Run
+variable DBWEBB_PORT. Run
 
 ```
 npm start
@@ -75,8 +86,7 @@ npm start
 ```
 
 The game server starts at port 3000, unless the environment variable DBWEBB_PORT
-is set. In that case, it will try to start at DBWEBB_PORT. This may interfere
-with the local redovisa server (see Start server locally above).
+is set. In that case, it will start at DBWEBB_PORT.
 
 ### Try out the chat locally
 
@@ -88,8 +98,7 @@ npm start
 ```
 
 The chat starts at port 1337, unless the environment variable DBWEBB_PORT
-is set. In that case, it will try to start at DBWEBB_PORT. This may interfere
-with the local redovisa server (see Start server locally above).
+is set. In that case, it will start at DBWEBB_PORT.
 
 To really try out the chat, open the route /chatt in two browser windows and
 start chatting.
@@ -124,21 +133,23 @@ npm run test
 npm run test-all
 ```
 
-### Run tests in Docker containers !!!TEST!!!
+### Run tests in Docker containers
 
 Run some of the following for unit-tests in docker
 
 ```
 npm run test-node9
 npm run test-node8
-npm run test-node6
 ```
 
 
 ## Summary of ports
 
 The redovisa page will start at port 5000 or DBWEBB_PORT.
+
 The Nim game server starts at port 3000 or DBWEBB_PORT (not included in this
 repository, se more info above).
+
 The chat starts at port 1337 or DBWEBB_PORT.
+
 The MongoDB is listening on port 27017.

@@ -11,10 +11,9 @@
     "test-scrutinizer": "nyc --all --reporter=clover mocha 'test/**/*.js'",
     "test-node9": "docker-compose -f docker-compose-test.yml run node9_alpine npm test",
     "test-node8": "docker-compose -f docker-compose-test.yml run node8_alpine npm test",
-    "test-node6": "docker-compose -f docker-compose-test.yml run node6_alpine npm test",
     "report-codecov": "nyc report --reporter=lcov > coverage.lcov && codecov",
     "htmlhint": "node_modules/.bin/htmlhint --ignore build/**,node_modules/**,coverage/** | grep -v 'Config loaded:'",
-    "stylelint":  "node_modules/.bin/stylelint **/*.css --ignore-path .gitignore",
+    "stylelint": "node_modules/.bin/stylelint **/*.css --ignore-path .gitignore",
     "eslint": "node_modules/.bin/eslint . --ignore-path .gitignore"
   },
   "author": "Martin Fagerlund",
@@ -43,6 +42,7 @@
     "mocha": "^4.0.1",
     "nyc": "^11.2.1",
     "stylelint": "^8.2.0",
+    "supertest": "^3.0.0",
     "uglify-js": "^3.1.6"
   },
   "engines": {
