@@ -71,7 +71,8 @@ h1 {
 
 .nav-button {
     padding: 10px;
-    background-color: #0140aa;
+    /*background-color: #0140aa;*/
+    background-color: #2079D7;
     border-radius: 5px;
     box-shadow: 1px 1px 1px #888;
     color: black;
